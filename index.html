@@ -1,0 +1,597 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blessing Recipe Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff7f0;
+      color: #333;
+    }
+
+    nav {
+      background-color: #ff5722;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 15px;
+      font-size: 18px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .page {
+      display: none;
+      padding: 30px 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1 {
+      color: #e64a19;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .dish {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .dish img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .gallery-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .gallery-item {
+      display: flex;
+      flex-direction: row;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .gallery-item img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .gallery-item .info {
+      margin-left: 15px;
+      flex: 1;
+    }
+
+    .gallery-item button {
+      padding: 6px 12px;
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .recipe-text {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #444;
+      display: none;
+    }
+
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    /* Mobile-friendly tweaks */
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .gallery-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+      }
+
+      .gallery-item .info {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('recipes')">Recipes</a>
+    <a href="#" onclick="showPage('gallery')">Gallery</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('contact')">Contact</a>
+  </nav>
+
+  <div id="home" class="page active">
+    <h1>Welcome to Blessing Recipe Book</h1>
+    <p style="text-align:center;">Explore delicious meals you can try at home!</p>
+    <div class="dish-grid">
+      <div class="dish">
+        <h3>Jollof Rice</h3>
+        <p>3 cups long-grain parboiled rice
+
+1/4 cup vegetable oil
+
+1 can (400g) plum tomatoes or 4 large fresh tomatoes (blended)
+
+1/4 cup tomato paste
+
+1 large red bell pepper (blended)
+
+1-2 scotch bonnet peppers (blended, optional for spice)
+
+1 large onion (half blended, half sliced)
+
+2-3 cups chicken or beef stock
+
+1 teaspoon thyme
+
+1 teaspoon curry powder
+
+1 bay leaf (optional)
+
+2 seasoning cubes (like Maggi or Knorr)
+
+Salt to taste
+
+1 teaspoon white or black pepper</p>
+      </div>
+      <div class="dish">
+        <h3>Fried Rice</h3>
+        <p> cups long-grain parboiled rice 
+
+1/2 kg chicken, liver, or beef (optional)
+
+1 cup mixed vegetables (carrots, green peas, sweet corn)
+
+1 cup chopped green bell pepper
+
+1/2 cup chopped onions
+
+2 tablespoons curry powder
+
+1 teaspoon thyme
+
+2 seasoning cubes (like Maggi or Knorr)
+
+1/2 teaspoon white or black pepper
+
+Salt to taste
+
+1/4 cup vegetable oil
+
+2 cups meat or chicken stock
+
+Optional: 1/2 teaspoon garlic and ginger (minced)
+
+</p>
+      </div>
+      <div class="dish">
+        <h3>Amala and Ewedu</h3>
+        <p>1 bunch fresh ewedu leaves (or 1 cup frozen jute leaves)
+
+1 teaspoon ground crayfish
+
+1 teaspoon iru (locust beans)
+
+Salt to taste
+
+1 seasoning cube
+
+1 cup water (adjust as needed)</p>.</p>
+      </div>
+      <div class="dish">
+        <h3>Pounded Yam</h3>
+        <p>1 medium-sized yam tuber
+
+Water</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="recipes" class="page">
+    <h1>Our Favorite Recipes</h1>
+    <div class="dish-grid">
+      <div class="dish">
+        <h3>Chocolate Pancakes</h3>
+        <p>1 cup all-purpose flour
+
+1/4 cup unsweetened cocoa powder
+
+1/4 cup sugar (adjust to taste)
+
+1 teaspoon baking powder
+
+1/4 teaspoon baking soda
+
+A pinch of salt
+1 cup milk (or evaporated milk + a little water)
+
+1 egg
+
+2 tablespoons melted butter or vegetable oil
+
+1/2 teaspoon vanilla extract (optional)</p>
+      </div>
+      <div class="dish">
+        <h3>Spaghetti Bolognese</h3>
+        <p>1 pack (500g) spaghetti
+
+3 medium fresh tomatoes (blended or chopped)
+
+2 tablespoons tomato paste
+
+1 large onion (chopped)
+
+2–3 scotch bonnet peppers (blended or chopped) – optional for spice
+
+1/2 cup vegetable oil
+
+2 seasoning cubes (e.g. Maggi or Knorr)
+
+1 teaspoon curry powder
+
+1/2 teaspoon thyme.</p>
+      </div>
+      <div class="dish">
+        <h3>Moi Moi</h3>
+        <p>2 cups peeled beans (black-eyed peas or brown beans)
+
+1 large red bell pepper (tatashe)
+
+1–2 scotch bonnet peppers (optional, for spice)
+
+1 medium onion
+
+1/4 cup vegetable oil or palm oil
+
+1 tablespoon ground crayfish (optional)
+
+2 seasoning cubes (e.g., Maggi or Knorr)
+
+1/2 teaspoon salt (to taste)
+
+Warm water (as needed to blend and soften batter)</p>
+      </div>
+      <div class="dish">
+        <h3>Chicken Stew</h3>
+        <p>1 whole chicken (cut into parts) or 1 kg chicken pieces
+
+1 chopped onion
+
+1 teaspoon curry powder
+
+1 teaspoon thyme
+
+2 seasoning cubes (e.g., Maggi or Knorr)
+
+Salt to taste
+
+Water (for boiling)
+4–6 medium tomatoes (or 1 can plum tomatoes)
+
+2–3 red bell peppers (tatashe)
+
+1–2 scotch bonnet peppers (ata rodo) – for spice
+
+1–2 medium onions
+
+1/4 – 1/2 cup vegetable oil (or oil used from frying chicken)
+
+1 tablespoon tomato paste (optional, for color and richness)
+
+1 teaspoon curry powder
+
+1 teaspoon thyme
+
+1 teaspoon ginger & garlic paste (optional)
+
+2 seasoning cubes
+
+Salt to taste
+
+</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="gallery" class="page">
+    <h1>Food Gallery</h1>
+    <div class="gallery-flex">
+      <div class="gallery-item">
+        <div class="info">
+          <h4>Burger</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">500g (1 lb) minced beef (preferably 80% lean, 20% fat)
+
+1 small onion (finely chopped or grated)
+
+1 clove garlic (minced) – optional
+
+1 teaspoon black pepper
+
+1 teaspoon salt
+
+1 teaspoon Worcestershire sauce (optional)
+
+1 tablespoon breadcrumbs (optional, helps bind)
+
+1 egg (optional, for binding)
+Burger buns
+
+Lettuce leaves
+
+Tomato slices
+
+Onion slices
+
+Cheese slices (optional)
+
+Pickles (optional)
+
+Ketchup, mayonnaise, or mustard</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>Shawarma</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">2 cups shredded cooked chicken (grilled or fried)
+
+1 tablespoon mayonnaise
+
+1 tablespoon ketchup
+
+1 teaspoon Shawarma spice mix (or mix: paprika, garlic, curry, black pepper)
+
+1/2 cup sliced cabbage
+
+1 carrot (grated)
+
+1 small onion (sliced, optional)
+
+1–2 wraps or pita bread
+
+Vegetable oil for frying
+
+</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>Hot dog</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">2 hot dog buns
+
+2 sausages
+
+2 tbsp mayonnaise or ketchup
+
+1 tbsp mustard (optional)
+
+1/4 cup sliced onions or cabbage (optional)
+
+Butter or oil (for toasting)</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>Pizza</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">Parboil rice, stir-fry with veggies, liver, chicken seasoning and curry for flavor.</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>pop-corn</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">1/2 cup popcorn kernels
+
+2–3 tablespoons vegetable oil (or butter)
+
+1–2 tablespoons sugar or salt (to taste)</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>cup-cake</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">1 cup flour
+
+1/2 cup sugar
+
+1/2 cup butter or margarine (softened)
+
+2 eggs
+
+1/2 teaspoon baking powder
+
+1/4 cup milk
+
+1 teaspoon vanilla flavor</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>cookies</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">Preheat oven to 180°C (350°F).
+
+Mix butter and sugar until light and fluffy.
+
+Add egg and vanilla, mix well.
+
+Add flour, baking powder, and salt. Mix into a dough.
+
+Add chocolate chips (if using).
+
+Scoop small dough balls onto a greased tray.
+
+Bake for 10–12 minutes until golden at the edges.</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>Sandwiches</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">2 slices bread
+
+1–2 tablespoons mayonnaise or butter
+
+2 slices tomato
+
+2 slices cucumber (optional)
+
+1 boiled egg or slice of cheese or ham/chicken
+
+</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>French fries</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">2–3 large potatoes
+
+Salt (to taste)
+
+Vegetable oil (for frying)</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>Spring rolls</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text">Spring roll wrappers (store-bought or homemade)
+
+1 cup shredded cabbage
+
+1/2 cup grated carrot
+
+1/2 cup cooked minced meat or chicken (optional)
+
+1 tbsp soy sauce
+
+Salt and pepper to taste
+
+Vegetable oil (for frying)
+
+</p>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="info">
+          <h4>Samosa</h4>
+          <button onclick="toggleRecipe(this)">See Recipe</button>
+          <p class="recipe-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="about" class="page">
+    <h1>About Us</h1>
+    <p style="text-align:center;">Welcome to Blessing's Recipe Book!
+
+I created this website to share simple, delicious recipes that anyone can cook — no chef skills required! You'll find Nigerian favorites like Jollof rice, Moi Moi, and Fried Rice, as well as fun international treats like burgers and pancakes.</p>
+  </div>
+
+  <div id="contact" class="page">
+    <h1>Contact Us</h1>
+    <p style="text-align:center;">Email: blessingdanzoss7@gmail.comk@example.com</p>
+    <p style="text-align:center;">Instagram: @blessingrecipebook</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 My Blessing Recipe Book </p>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    function toggleRecipe(button) {
+      const recipeText = button.nextElementSibling;
+      if (recipeText.style.display === "none" || recipeText.style.display === "") {
+        recipeText.style.display = "block";
+        button.textContent = "Hide Recipe";
+      } else {
+        recipeText.style.display = "none";
+        button.textContent = "See Recipe";
+      }
+    }
+  </script>
+
+</body>
+</html>
